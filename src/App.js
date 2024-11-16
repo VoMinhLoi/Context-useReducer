@@ -22,7 +22,16 @@ function App() {
       <button onClick={hanldeSubmit}>add</button>
       <ul>
         {toDos.map((item, index) => (
-          <li key={index}>{item}</li>
+          <li key={index}>
+            {item}
+            <span
+              onClick={() => {
+                dispatch(actions.deleToDoInput(index));
+              }}
+            >
+              &times;
+            </span>
+          </li>
         ))}
       </ul>
     </div>

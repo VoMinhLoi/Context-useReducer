@@ -1,5 +1,5 @@
 import { act } from "react";
-import { SET_TODO_INPUT, ADD_TODO_INPUT } from "./constants";
+import { SET_TODO_INPUT, ADD_TODO_INPUT, DELETE_TODO_INPUT } from "./constants";
 const initState = {
   toDos: [],
   toDo: "",
@@ -15,6 +15,13 @@ const reducer = (state, action) => {
       return {
         ...state,
         toDos: [...state.toDos, action.payload],
+      };
+    case DELETE_TODO_INPUT:
+      const newToDos = [...state.toDos];
+      newToDos.splice(action.payload, 1);
+      return {
+        ...state,
+        toDos: newToDos,
       };
     default:
       throw new Error("Invalid");
