@@ -1,5 +1,9 @@
-import { act } from "react";
-import { SET_TODO_INPUT, ADD_TODO_INPUT, DELETE_TODO_INPUT } from "./constants";
+import {
+  SET_TODO_INPUT,
+  ADD_TODO_INPUT,
+  DELETE_TODO_INPUT,
+  EDIT_TODO_INPUT,
+} from "./constants";
 const initState = {
   toDos: [],
   toDo: "",
@@ -15,6 +19,13 @@ const reducer = (state, action) => {
       return {
         ...state,
         toDos: [...state.toDos, action.payload],
+      };
+    case EDIT_TODO_INPUT:
+      const editToDos = [...state.toDos];
+      editToDos.splice(action.payload.indexNeedEdit, 1, action.payload.toDo);
+      return {
+        ...state,
+        toDos: editToDos,
       };
     case DELETE_TODO_INPUT:
       const newToDos = [...state.toDos];
