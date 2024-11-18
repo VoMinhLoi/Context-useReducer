@@ -1,0 +1,17 @@
+.btn {
+    color: red;
+    &:hover{
+        opacity: 0.5;
+        cursor: pointer;
+    }
+}
+
+.primary {
+    color: white;
+    background-color: rgb(42, 150, 212);
+}
+
+.disable {
+    pointer-events:none;
+    opacity: 0.5;
+}
